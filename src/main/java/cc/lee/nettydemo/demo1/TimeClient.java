@@ -28,10 +28,13 @@ public class TimeClient {
                         }
                     });
 
+            // 发起异步连接操作
             ChannelFuture future = bootstrap.connect(host, port).sync();
 
+            // 等待客户端链路关闭
             future.channel().closeFuture().sync();
         } finally {
+            // 优雅退出，释放NIO线程组
             group.shutdownGracefully();
         }
     }

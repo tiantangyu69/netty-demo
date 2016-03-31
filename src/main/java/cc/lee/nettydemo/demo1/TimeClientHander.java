@@ -34,6 +34,7 @@ public class TimeClientHander extends ChannelHandlerAdapter {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        // 释放资源
         ctx.close();
     }
 }
