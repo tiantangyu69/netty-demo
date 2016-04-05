@@ -39,6 +39,7 @@ public class EchoServer {
 
             future.channel().closeFuture().sync();
         } finally {
+            // 优雅退出
             loopGroup.shutdownGracefully();
             workGroup.shutdownGracefully();
         }
