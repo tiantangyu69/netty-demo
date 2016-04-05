@@ -29,7 +29,9 @@ public class EchoServer {
                     .handler(new LoggingHandler(LogLevel.INFO)).childHandler(new ChannelInitializer<SocketChannel>() {
                 @Override
                 protected void initChannel(SocketChannel socketChannel) throws Exception {
+                    // 定长解码器
                     socketChannel.pipeline().addLast(new FixedLengthFrameDecoder(20));
+                    // String解码器
                     socketChannel.pipeline().addLast(new StringDecoder());
                     socketChannel.pipeline().addLast(new EchoServerHandler());
                 }
